@@ -1,39 +1,31 @@
-# Projeto Laravel + Angular
+# Front End Angular
 
-## Requisitos
+Este é um projeto angular, que tem como desafio a implementação da interface que vai consumir o projeto, [bemol-digital-angular-challenge](https://github.com/LeonardoBAV/bemol-digital-angular-challenge).
+
+## Instalação
+
+### Requisitos
 - docker
-- curl
-- npm
+- git
 
-## Back-End Instalação
-É importante que a porta 80 esteja liberada, pois por padrão o sail utiliza o docker para rodar nesta porta
+É importante que a porta 4200 esteja liberada, de acordo com o script de comandos, foi configurado para utilizar esta porta. Para a instalar siga os comandos abaixo:
 ```sh
-curl -s https://laravel.build/example-app | bash
-cd example-app
-./vendor/bin/sail up -d
-./vendor/bin/sail composer require leonardobav/bemoldigitallaravelchallenge-module
-./vendor/bin/sail artisan module:enable
-./vendor/bin/sail artisan migrate
+git clone https://github.com/LeonardoBAV/bemol-digital-angular-challenge.git
+cd bemol-digital-angular-challenge/
+docker build -t bemol-digital-angular-image .
+docker run --name bemol-digital-angular-image -d -p 4200:4200 bemol-digital-angular-image
 ```
-TESTE
-```sh
-http://localhost/api/bemoldigitallaravelchallenge/
-```
-## Front-End Instalação
-A partir da pasta root da instalação do Laravel executa os comandos abaixo:
-```sh
-cd Modules/Bemoldigitallaravelchallenge/Presentation/Angular/ 
-npm install 														
-npm install -g @angular/cli									
-ng serve
-```
-ACESSAR
+
+Descrição do que cada comando realiza:
+- 1- Download do projeto via git clone
+- 2- Entrar na pasta raiz do projeto
+- 3- Monta a imagem do container
+- 4- Executa o container
+        - Caso queira executar o projeto em outra porta, substitua 4200:4200 por {PORTA_DESEJADA}:4200
+
+### Acessar
 ```sh
 http://localhost:4200
 ```
-
 Observações
-- Projeto para gerenciamento de cliente/usuário
-- Projeto segue estrutura de uma arquitetura DDD
-- Projeto Angular que consome a API esta embutido neste repositório
 - Projeto desenvolvido no lubuntu versão 21.10
